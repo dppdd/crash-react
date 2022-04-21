@@ -21,6 +21,7 @@ import { Table, TableHead, TableRow, TableBody, TableCell } from './Table'
 	TableHead
 		- light - thead--light
 		- dark  - thead--dark
+		- large - thead--large
 
 	TableCell 
 		- scope - options: thead
@@ -31,7 +32,7 @@ export default function BootstrapTable () {
   return (
     <div>
       <Table striped>
-        <TableHead large dark>
+        <TableHead large>
           <TableRow>
             <TableCell light scope={'thead'}>N</TableCell>
             <TableCell scope={'thead'}>First</TableCell>
