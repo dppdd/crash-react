@@ -1,13 +1,21 @@
-import React, { useContext } from 'react'
-
 export default function TableHead (props) {
-  return (
-    <thead
-      className={
-				`${props.light ? 'thead--light ' : ''}${props.large ?'thead--large ' : ''} ${props.dark && 'thead--dark ' || ''}`
-      }
-    >
-      {props.children}
-    </thead>
+  const classNamesMap = {
+    large: 'thead--large',
+    light: 'thead--light',
+    dark: 'thead--dark'
+  }
+  const { ev } = props
+  const classes = ev
+    ? ev
+        .map(e => {
+          return classNamesMap[e] ? classNamesMap[e] : ''
+        })
+        .join(' ')
+    : []
+
+  return ev ? (
+    <thead className={classes}>{props.children}</thead>
+  ) : (
+    <thead>{props.children}</thead>
   )
 }

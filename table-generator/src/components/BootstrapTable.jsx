@@ -11,30 +11,39 @@ import { Table, TableHead, TableRow, TableBody, TableCell } from './Table'
 	This is nice to be refactored/tweaked and Context API used.
 
 	Available props, mainly for styles:
+	ev - stands for Enhance Visuals, we use it to inject modifiers.
+	It looks neat with boolean directly like <TableHead dark>
+	But they are direct children of props and that should be avoided.
+	We want to control the actual CSS Class names not here, but capsulated
+	in every component, so the connection between CSS and Component 
+	to be in once place.
+
 	Component
-		- attribute - BEM Class
+		- attribute(string) - BEM Class(example, defined in every component)
 	
 	Table
-		- dark  - table--dark
-		- striped - table--striped
+		- 'dark'  - table--dark
+		- 'striped' - table--striped
 
 	TableHead
-		- light - thead--light
-		- dark  - thead--dark
-		- large - thead--large
+		- 'light' - thead--light
+		- 'dark'  - thead--dark
+		- 'large' - thead--large
 
 	TableCell 
 		- scope - options: thead
-
+	
 */
 
 export default function BootstrapTable () {
   return (
     <div>
-      <Table striped>
-        <TableHead large>
+      <Table ev={['striped']}>
+        <TableHead ev={['large', 'dark']}>
           <TableRow>
-            <TableCell light scope={'thead'}>N</TableCell>
+            <TableCell light scope={'thead'}>
+              #
+            </TableCell>
             <TableCell scope={'thead'}>First</TableCell>
             <TableCell scope={'thead'}>Last</TableCell>
             <TableCell scope={'thead'}>Handle</TableCell>
@@ -42,19 +51,19 @@ export default function BootstrapTable () {
         </TableHead>
         <TableBody>
           <TableRow>
-					<TableCell scope={'thead'}>1</TableCell>
+            <TableCell scope={'thead'}>1</TableCell>
             <TableCell>Dimitar</TableCell>
             <TableCell>Dimitrov</TableCell>
             <TableCell>Handle</TableCell>
           </TableRow>
-					<TableRow>
-					<TableCell scope={'thead'}>1</TableCell>
+          <TableRow>
+            <TableCell scope={'thead'}>2</TableCell>
             <TableCell>Dimitar</TableCell>
             <TableCell>Dimitrov</TableCell>
             <TableCell>Handle</TableCell>
           </TableRow>
-					<TableRow>
-					<TableCell scope={'thead'}>1</TableCell>
+          <TableRow>
+            <TableCell scope={'thead'}>3</TableCell>
             <TableCell>Dimitar</TableCell>
             <TableCell>Dimitrov</TableCell>
             <TableCell>Handle</TableCell>
