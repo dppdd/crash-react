@@ -35,11 +35,40 @@ import { Table, TableHead, TableRow, TableBody, TableCell } from './Table'
 	
 */
 
+/*
+
+	helper structure.js or constants.js
+
+	table-structure.js - here we add the column names and more specifics, for all tables in this app.
+
+	"bootstrapTable": {
+		columns: [{
+			name: "#",
+			meta: "meta data about the column",
+			type: "string/url"
+		},
+			{ name: "First",
+			meta: "meta data about the column",
+			type: "string"},
+		
+			{ name: "Last",
+			meta: "meta data about the column",
+			type: "string"},
+		
+			{ name: "Handle",
+			meta: "meta data about the column",
+			type: "string"},
+		]
+	}
+
+
+*/
+
 export default function BootstrapTable () {
   return (
     <div>
       <Table ev={['striped']}>
-        <TableHead ev={['large', 'dark']}>
+        <TableHead>
           <TableRow>
             <TableCell light scope={'thead'}>
               #
