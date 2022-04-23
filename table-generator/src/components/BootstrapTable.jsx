@@ -1,4 +1,6 @@
 import { Table, TableHead, TableRow, TableBody, TableCell } from './Table'
+import { v4 as uuidv4 } from 'uuid';
+
 
 /* 
 
@@ -54,7 +56,7 @@ export default function BootstrapTable(props) {
 							return (
 								<TableRow key={row.id}>
 									{
-										tableStructure.map(itemKey => <TableCell>{row[itemKey.metaKey]}</TableCell>)
+										tableStructure.map(itemKey => <TableCell key={uuidv4()}>{row[itemKey.metaKey]}</TableCell>)
 									}
 								</TableRow>
 							)
