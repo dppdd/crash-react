@@ -1,6 +1,6 @@
+import { useState } from 'react'
 import { Table, TableHead, TableRow, TableBody, TableCell } from './Table'
 import { v4 as uuidv4 } from 'uuid';
-
 
 /* 
 
@@ -37,14 +37,32 @@ import { v4 as uuidv4 } from 'uuid';
 	
 */
 
-export default function BootstrapTable(props) {
+export default function BootstrapTable(props, addRemoveClass) {
 	const { tableStructure, tableData } = props.data
-	// ! FIX KEYS
-	// ! Add scope attribute to body TableCell.
+	const [ev, setEv] = useState(['striped'])
+
+	function addRemoveClass(e, newClass) {
+		e.preventDefault();
+		if (ev.includes(newClass)) {
+			return setEv(ev.filter(e => e !== newClass))
+		} else {
+			return setEv([...ev, newClass])
+		}
+	}
+
+	function ToggleClassButton(props) {
+		return (
+			<button
+				className="table__button-toggle--light"
+				onClick={(e) => {
+					return addRemoveClass(e, props.toggleClass)
+				}}>{props.label}</button>
+		)
+	}
 
 	return (
-		<div>
-			<Table ev={['striped']}>
+		<>
+			<Table ev={ev}>
 				<TableHead>
 					<TableRow>
 						{tableStructure.map(col => <TableCell scope={'thead'} key={col.metaKey}>{col.name}</TableCell>)}
@@ -64,6 +82,14 @@ export default function BootstrapTable(props) {
 					}
 				</TableBody>
 			</Table>
-		</div>
+			<ToggleClassButton
+				label="Toggle Dark Theme"
+				toggleClass="dark"
+			/>
+			<ToggleClassButton
+				label="Toggle Stripes"
+				toggleClass="striped"
+			/>
+		</>
 	)
 }
