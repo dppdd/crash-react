@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import './App.css'
 import BootstrapTable from './components/BootstrapTable'
+import { bootstrapTableDB } from '../mock-db/bootstrapTable'
 
-function App () {
-  const [count, setCount] = useState(0)
+function App() {
+  // we set the mocked API response as local state.  
+  const [data, setData] = useState(bootstrapTableDB)
 
   return (
     <div className='App'>
-      <BootstrapTable />
+      <BootstrapTable data={data} />
     </div>
   )
 }

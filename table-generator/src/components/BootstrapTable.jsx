@@ -35,70 +35,33 @@ import { Table, TableHead, TableRow, TableBody, TableCell } from './Table'
 	
 */
 
-/*
+export default function BootstrapTable(props) {
+	const { tableStructure, tableData } = props.data
+	// ! FIX KEYS
+	// ! Add scope attribute to body TableCell.
 
-	helper structure.js or constants.js
-
-	table-structure.js - here we add the column names and more specifics, for all tables in this app.
-
-	"bootstrapTable": {
-		columns: [{
-			name: "#",
-			meta: "meta data about the column",
-			type: "string/url"
-		},
-			{ name: "First",
-			meta: "meta data about the column",
-			type: "string"},
-		
-			{ name: "Last",
-			meta: "meta data about the column",
-			type: "string"},
-		
-			{ name: "Handle",
-			meta: "meta data about the column",
-			type: "string"},
-		]
-	}
-
-
-*/
-
-export default function BootstrapTable () {
-  return (
-    <div>
-      <Table ev={['striped']}>
-        <TableHead>
-          <TableRow>
-            <TableCell light scope={'thead'}>
-              #
-            </TableCell>
-            <TableCell scope={'thead'}>First</TableCell>
-            <TableCell scope={'thead'}>Last</TableCell>
-            <TableCell scope={'thead'}>Handle</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell scope={'thead'}>1</TableCell>
-            <TableCell>Dimitar</TableCell>
-            <TableCell>Dimitrov</TableCell>
-            <TableCell>Handle</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell scope={'thead'}>2</TableCell>
-            <TableCell>Dimitar</TableCell>
-            <TableCell>Dimitrov</TableCell>
-            <TableCell>Handle</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell scope={'thead'}>3</TableCell>
-            <TableCell>Dimitar</TableCell>
-            <TableCell>Dimitrov</TableCell>
-            <TableCell>Handle</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </div>
-  )
+	return (
+		<div>
+			<Table ev={['striped']}>
+				<TableHead>
+					<TableRow>
+						{tableStructure.map(col => <TableCell scope={'thead'} key={col.metaKey}>{col.name}</TableCell>)}
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{
+						tableData.map(row => {
+							return (
+								<TableRow key={row.id}>
+									{
+										tableStructure.map(itemKey => <TableCell>{row[itemKey.metaKey]}</TableCell>)
+									}
+								</TableRow>
+							)
+						})
+					}
+				</TableBody>
+			</Table>
+		</div>
+	)
 }
