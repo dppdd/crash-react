@@ -6,7 +6,5 @@ Here I will add some React experiments, short and easy examples that could be us
 
 We generate a sample HTML table, using bootstrap-like styles. The structure of the table(table columns, meta data) and the content of the table we should get from DB. For the simplicity of the example, we mocked up the DB in src/mock-db. Table.scss contains the CSS code, it should be separated for every little component, but this is TODO for now.
 
-
-
-
-
+Demo: [https://crash-react.onrender.com/table-generator/dist/index.html](https://crash-react.onrender.com/table-generator/dist/index.html)
+<br><br>
